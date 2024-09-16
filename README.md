@@ -84,10 +84,15 @@ Download
 
 - **Link output directory with `apkpure --symlink ~/Desktop/apks-output`.**
 - Running `which apkpure` on Linux might help figuring out your installation directory.
-- Get something similar to:
 
-<img style="style: block; margin: 0 auto; border-radius: 15px;" src="https://github.com/user-attachments/assets/18edea26-7d18-4e1c-a004-3f2ec61d0622" alt="APKPure Logo" width="450"/>
 
+Example
+-
+<div align="center">
+  
+  ![](https://github.com/user-attachments/assets/64b40009-39fa-4a24-987b-efc486ab62ba)
+  
+</div>
 
 .env File
 -
