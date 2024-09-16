@@ -128,19 +128,15 @@ class Files {
     static async createSymlink({ targetDir, symlinkPath }) {
         return new Promise((resolve, reject) => {
             try {
-                // Check if the symlinkPath already exists
                 if (fs.existsSync(symlinkPath)) {
-                    // If it's a symlink, remove it
                     if (fs.lstatSync(symlinkPath).isSymbolicLink()) {
                         fs.unlinkSync(symlinkPath);
                     } else {
-                        // If it's a directory or file, handle as needed
                         reject(new Error(`Path already exists and is not a symlink: ${symlinkPath}`));
                         return;
                     }
                 }
 
-                // Create the symlink
                 fs.symlink(targetDir, symlinkPath, 'dir', (err) => {
                     if (err) {
                         reject(err);

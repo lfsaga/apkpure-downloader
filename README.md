@@ -1,11 +1,11 @@
 <div align="center">
-<img src="https://github.com/user-attachments/assets/03938ee1-a7fa-4626-8b5c-c486008fe501" alt="APKPure Logo" width="70" style="style: block; margin: 0 auto; border-radius: 15px;"/>
+<img src="https://github.com/user-attachments/assets/4a9e6998-480c-4dcb-ab71-e4d304a16fce" alt="APKPure Logo" width="70" style="style: block; margin: 0 auto; border-radius: 15px;"/>
 
 # apkpure-downloader
 
 </div>
 
-**Search/manage/download APK files from [apkpure.com](https://apkpure.com/) in a better way**
+**Search and download from [apkpure.com](https://apkpure.com/) in a better way**
 
 [![npm version](https://img.shields.io/npm/v/apkpure)](https://www.npmjs.com/package/apkpure)
 ![Last Commit](https://img.shields.io/github/last-commit/lfsaga/apkpure-downloader)
@@ -46,18 +46,13 @@ npm cache clean --force
 🔨 Usage
 -
 ```bash
-# from all apps file, get las 3 versions from apkpure.com
+# download 3 last version from all favorites
 apkpure --yes --last 3 --threads 4
 ```
 
-
 ```bash
-# search multiple on apkpure.com
-apkpure \
-  --search netflix \
-  --search whatsapp \
-  --search tiktok \
-  --search telegram
+# multi search to add new favorites
+apkpure --search netflix --search whatsapp --search tiktok
 ```
 
 
