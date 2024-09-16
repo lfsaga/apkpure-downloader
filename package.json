@@ -1,0 +1,35 @@
+{
+  "name": "apkpure",
+  "version": "0.0.11",
+  "description": "Download APK files from apkpure.com in a better way. ",
+  "repository": "https://github.com/lfsaga/apkpure-downloader",
+  "keywords": [
+    "android",
+    "debugging",
+    "apks",
+    "apkmirror",
+    "apkpure"
+  ],
+  "author": {
+    "name": "lfsaga",
+    "email": "luisfesaga99@gmail.com"
+  },
+  "main": "src/cli.mjs",
+  "bin": {
+    "apkpure": "./src/cli.mjs"
+  },
+  "scripts": {
+    "reset": "rm -rf output/ favorites.txt .env",
+    "start": "zx ./src/cli.mjs"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "enquirer": "^2.4.1",
+    "ora": "^8.1.0",
+    "puppeteer": "^23.3.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "zx": "^7.0.0"
+  }
+}

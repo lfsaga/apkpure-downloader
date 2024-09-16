@@ -1,0 +1,5 @@
+https://apkpure.com/netflix/com.netflix.mediaclient
+https://apkpure.com/whatsapp-android/com.whatsapp
+https://apkpure.com/tiktok/com.ss.android.ugc.trill
+https://apkpure.com/telegram/org.telegram.messenger
+<valid-apkpure-app-url>
