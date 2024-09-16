@@ -1,6 +1,6 @@
 {
   "name": "apkpure",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Download from apkpure.com in a better way",
   "repository": "https://github.com/lfsaga/apkpure-downloader",
   "keywords": [

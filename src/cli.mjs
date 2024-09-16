@@ -29,7 +29,7 @@ try {
     });
 
     await Files.copyFileIfNotExists({
-        srcPath: join(basePath, 'apps.example.txt'),
+        srcPath: join(basePath, 'favorites.example.txt'),
         destPath: appsPath
     });
 } catch (err) {
