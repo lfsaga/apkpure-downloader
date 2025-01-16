@@ -1,6 +1,6 @@
 {
   "name": "apkpure",
-  "version": "0.0.13",
+  "version": "0.1.0",
   "description": "Download from apkpure.com in a better way",
   "repository": "https://github.com/lfsaga/apkpure-downloader",
   "keywords": [
@@ -10,26 +10,21 @@
     "apkmirror",
     "apkpure"
   ],
-  "author": {
-    "name": "lfsaga",
-    "email": "luisfesaga99@gmail.com"
-  },
-  "main": "src/cli.mjs",
+  "main": "src/index.mjs",
   "bin": {
-    "apkpure": "./src/cli.mjs"
+    "apkpure": "./src/index.mjs",
   },
   "scripts": {
-    "reset": "rm -rf output/ favorites.txt .env",
-    "start": "zx ./src/cli.mjs"
+    "reset": "rm -rf output/ favorites.txt .env"
   },
   "dependencies": {
-    "cheerio": "^1.0.0",
-    "dotenv": "^16.4.5",
-    "enquirer": "^2.4.1",
+    "chalk": "^5.4.1",
+    "commander": "^12.1.0",
+    "inquirer": "^12.3.0",
+    "lowdb": "^7.0.1",
     "ora": "^8.1.0",
     "puppeteer": "^23.3.0",
     "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "zx": "^7.0.0"
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
   }
 }

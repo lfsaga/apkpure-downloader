@@ -1,116 +1,90 @@
 <div align="center">
-<img src="https://github.com/user-attachments/assets/4a9e6998-480c-4dcb-ab71-e4d304a16fce" alt="APKPure Logo" width="70" style="style: block; margin: 0 auto; border-radius: 15px;"/>
+<img src="https://github.com/user-attachments/assets/4a9e6998-480c-4dcb-ab71-e4d304a16fce" alt="apkpure-downloader" width="100" style="style: block; margin: 0 auto; border-radius: 15px;"/>
 
 # apkpure-downloader
 
 </div>
 
-**Search and download from [apkpure.com](https://apkpure.com/) in a better way**
+**search and download from apkpure.com in a better way**
 
 [![npm version](https://img.shields.io/npm/v/apkpure)](https://www.npmjs.com/package/apkpure)
 ![Last Commit](https://img.shields.io/github/last-commit/lfsaga/apkpure-downloader)
 
-- Mass download.
-- Smoothy CLI tool.
-- Can group `.apk` files by release date.
+- smoothy menu.
+- download multiple to filesystem.
+- group `.apk` files by yearMonth release format directories.
+- includes command to install `.xapk` files (needs `adb` in PATH)
 
+## requirements
 
+- `node`, `npm`, `adb` in PATH.
+- Tested on Linux so far.
 
-Requirements
--
-- `node`, `npm`.
--  [nvm (recommended)](https://github.com/nvm-sh/nvm).
-- Only tested on Linux.
+## ⬇️ install
 
-⬇️ Installation
--
-- With `npm`:
+- Install the command with `npm`
 
 ```bash
 npm install -g apkpure
 ```
 
+- Uninstall:
 
-**Manually:**
-- `git clone <repository-url>` and `npm install` on it.
-- Use `~/.bashrc` alias like:
 ```bash
-alias apkpure='cd /path/to/project && npm run start -- "$@"'
-```
-- Remove: 
-```bash
-npm uninstall -g apkpure 
+npm uninstall -g apkpure
 npm cache clean --force
 ```
 
-🔨 Usage
--
-```bash
-# download 3 last version from all favorites
-apkpure --yes --last 3 --threads 4
-```
+## 🔨 use cases
+
+- **alias explanation** : it's possible to internally alias from `com.github.android` to `github` or `gh`, **it must be set when searching**.
 
 ```bash
-# multi search to add new favorites
-apkpure --search netflix --search whatsapp --search tiktok
+apkpure init # required
+
+# interactive
+# search on apkpure to track/show them versions
+apkpure search fb,ig,tiktok
+
+# manage packages. go interactive
+apkpure show
+apkpure pull
+apkpure untrack
+
+# unattended
+apkpure pull fb,ig,tiktok --last 1
+apkpure pull fb --last 5 --threads 2
+apkpure show all --last 3 # tip: "all" is reserved
+apkpure show fb,ig,tiktok --last 1
+
+# apkpure-adb command (required adb in PATH)
+apkpure-adb install /path/to/package.xapk
 ```
 
+## contribute
 
-**Help**
--
+1. `git clone https://github.com/lfsaga/apkpure-downloader`
+2. `cd apkpure-downloader`
+3. `npm install`
+4. `npm install -g .`
+5. `apkpure init` (manually installed)
+
+## help output
+
 ```bash
-Usage: apkpure [flag] [flag] ...
+Usage: apkpure [options] [command]
 
-Manage apps
+https://github.com/lfsaga/apkpure-downloader
 
-  --apps [?editor]                    Print or edit favorite apps (apkpure.com url)
-  --search [string]                   Search (multiple) apps to add to favorite
-  --symlink [path]                    Symlink output directory
-  --help                              Print this help
-  
-Download
+Options:
+  -V, --version         print apkpure-downloader version
+  -h, --help            display help for command
 
-  No flags                            Evaluate favorite apps
-  --yes                               Evaluate favorite apps (skip confirmation)
-  --choose                            Select multiple from favorite apps
-  --last [n]                          Number of versions to download (default: all)
-  --threads [n]                       Enable parallel downloads (max: 10)
-  
-  *unattended: use --yes, --last and --threads 
+Commands:
+  init                  initialize in working directory
+  search [terms]        search new packages (track or pull them)
+  show [options] [ids]  show info about tracked packages
+  pull [options] [ids]  pull APK files for tracked packages
+  untrack [ids]         no track a package anymore
+  help [command]        display help for command
 ```
-
-📳 APK Files
--
-
-- **Link output directory with `apkpure --symlink ~/Desktop/apks-output`.**
-- Running `which apkpure` on Linux might help figuring out your installation directory.
-
-
-Example
--
-<div align="center">
-  
-  ![](https://github.com/user-attachments/assets/64b40009-39fa-4a24-987b-efc486ab62ba)
-  
-</div>
-
-.env File
--
-
-| Variable         | Example |Description |
-|------------------|-------------|-------------|
-| `OUTPUT_PATH`        |`/home/$USER/Downloads`| Overrides downloads output path. |
-| `OUTPUT_RELEASE_MONTH`   |`false`| Output files grouped by APK release month. |
-| `FORCE_LAST`         |`10`| Overrides number of versions to download. |
-| `FORCE_THREADS`         |`5`| Overrides threads to run. |
-| `EXECUTABLE_PATH`   |`/usr/bin/chrome-browser`| Overrides puppeteer executable path. |
-| `HEADLESS`          |`false`| Overrides puppeteer headless mode (running headful might consume resources). |
-
-Regardless
--
-
-- I started writing a quick utility script, then I built this CLI tool with few use cases.
-
-- This utility helped me so far and I would be very happy if it do the trick also for you!
-
-- Any suggestions, improvements or bug fixes would be greatly appreciated.
