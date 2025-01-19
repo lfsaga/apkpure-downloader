@@ -39,8 +39,8 @@ apkpure untrack
 # unatteneded
 apkpure info x --last 5
 apkpure pull x --last 5 --threads 2
-apkpure pull x -l 5 -t 2 # it's the same BUT short flags
-apkpure pull -a -l 1 # equals to use `--all`
+apkpure p x -l 5 -t 2 # it's the same BUT short flags
+apkpure p -a -l 1 # equals to use `--all`
 ```
 
 ## ⬇️ install
