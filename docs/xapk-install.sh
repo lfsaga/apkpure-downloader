@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
+# Tries to install the APKs and OBBs from an XAPK file
 #
-# requires adb device to perform install
+# requires an adb device connected
 # usage:
-#   ./xapk-install.sh /path/to/app.xapk
-#
+#   ./xapk-install.sh /path/to/file.xapk
 
 set -e
 

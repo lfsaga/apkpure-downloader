@@ -5,20 +5,43 @@
 
 </div>
 
-**search and download from apkpure.com in a better way**
+search and download from apkpure.com in a better way
 
 [![npm version](https://img.shields.io/npm/v/apkpure)](https://www.npmjs.com/package/apkpure)
 ![Last Commit](https://img.shields.io/github/last-commit/lfsaga/apkpure-downloader)
 
-- smoothy menu.
-- download multiple to filesystem.
-- group `.apk` files by yearMonth release format directories.
-- includes command to install `.xapk` files (needs `adb` in PATH)
+- **parallel download into filesystem**
+- **group `apk|xapk` files by release month directories**
+- **super smoothy menu**
+  - all commands could be interactive or unattended
 
 ## requirements
 
-- `node`, `npm`, `adb` in PATH.
-- Tested on Linux so far.
+- `node`, `npm`.
+- Tested only with POSIX Linux.
+
+## 🔨 use cases
+
+- **alias explanation** : when tracking a new package, an alias must be set to name from `com.twitter.android` to `x` internally (use package name anycase).
+- it's possible to use `--all` or `-a` to refer all tracked packages.
+
+```bash
+# search packages interactively
+# then you can pull files or add to tracked
+apkpure search x
+
+# list, show info or pull from tracked packages
+apkpure ls
+apkpure info
+apkpure pull
+apkpure untrack
+
+# unatteneded
+apkpure info x --last 5
+apkpure pull x --last 5 --threads 2
+apkpure pull x -l 5 -t 2 # it's the same BUT short flags
+apkpure pull -a -l 1 # equals to use `--all`
+```
 
 ## ⬇️ install
 
@@ -33,32 +56,7 @@ npm install -g apkpure
 ```bash
 npm uninstall -g apkpure
 npm cache clean --force
-```
-
-## 🔨 use cases
-
-- **alias explanation** : it's possible to internally alias from `com.github.android` to `github` or `gh`, **it must be set when searching**.
-
-```bash
-apkpure init # required
-
-# interactive
-# search on apkpure to track/show them versions
-apkpure search fb,ig,tiktok
-
-# manage packages. go interactive
-apkpure show
-apkpure pull
-apkpure untrack
-
-# unattended
-apkpure pull fb,ig,tiktok --last 1
-apkpure pull fb --last 5 --threads 2
-apkpure show all --last 3 # tip: "all" is reserved
-apkpure show fb,ig,tiktok --last 1
-
-# apkpure-adb command (required adb in PATH)
-apkpure-adb install /path/to/package.xapk
+rm -rf ~/.apkpure # check this folder for apks file may be relevant for you
 ```
 
 ## contribute
@@ -66,8 +64,10 @@ apkpure-adb install /path/to/package.xapk
 1. `git clone https://github.com/lfsaga/apkpure-downloader`
 2. `cd apkpure-downloader`
 3. `npm install`
-4. `npm install -g .`
-5. `apkpure init` (manually installed)
+4. test a dev command `npm run dev -- command args`
+5. Build
+   - test `apkpure` command directly with `npm install -g .`
+   - each changes requires a build `npm run build`
 
 ## help output
 
@@ -77,14 +77,21 @@ Usage: apkpure [options] [command]
 https://github.com/lfsaga/apkpure-downloader
 
 Options:
-  -V, --version         print apkpure-downloader version
-  -h, --help            display help for command
+  -V, --version                  output the version number
+  -h, --help                     display help for command
 
 Commands:
-  init                  initialize in working directory
-  search [terms]        search new packages (track or pull them)
-  show [options] [ids]  show info about tracked packages
-  pull [options] [ids]  pull APK files for tracked packages
-  untrack [ids]         no track a package anymore
-  help [command]        display help for command
+  list|ls                        list-only tracked packages
+  search|s [terms]               search and interact with results
+  info|i [options] [aliases]     print details from tracked packages
+  pull|p [options] [aliases]     pull last files from packages
+  untrack|u [options] [aliases]  untrack packages
+  clear-cache                    clear untracked files
+  help                           show help
 ```
+
+## the `xapk` problem
+
+You may find that many apps offered by APKPure are bundled and distributed as `.xapk` rather than the typical `.apk`. While installing an `.apk` file is the standard method on Android devices, `.xapk` files require additional steps. Below is a Bash script for installing `.xapk` files from your local filesystem using ADB (which requires a connected Android device).
+
+- [**xapk-install.sh**](docs/xapk-install.sh)
